@@ -20,10 +20,10 @@ Product.init(
       allowNull: false
     },
     price: {
-      type: DataTypes.DECIMAL(),
+      type: DataTypes.DECIMAL,
       allowNull: false,
       validate: {
-        isNumeric: true
+        isDecimal: true
       }
     },
     stock: {
@@ -31,11 +31,15 @@ Product.init(
       allowNull: false,
       defaultValue: 10,
       validate: {
-        isDecimal: true
+        isNumeric: true
       }
     },
     category_id: {
       type: DataTypes.INTEGER,
+      references: {
+        model: 'category',
+        key: 'id',
+      }
     }
     // define columns
   },
